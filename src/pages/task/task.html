@@ -7,12 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>task</ion-title>
+    <ion-title>快速任务</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let task of task_list.current">
+      <ion-thumbnail item-left>
+        <img [src]="task.icon" />
+      </ion-thumbnail>
+      <h2>{{task.keywords}}</h2>
+      <p>剩余{{task.put_in_count - task.grab_count < 0 ? 0 : task.put_in_count - task.grab_count}}份</p>
+      <p item-right>{{task.price}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -6,6 +6,7 @@ import { LoginPage } from '../pages/login/login';
 import { TaskPage } from '../pages/task/task';
 import { ApiService } from '../providers/api-service';
 import { UserService } from '../providers/user-service';
+import { TaskService } from '../providers/task-service';
 import { Storage } from '@ionic/storage';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { Storage } from '@ionic/storage';
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
     UserService,
     ApiService,
+    TaskService,
     Storage
   ]
 })
