@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { UserService } from '../../providers/user-service';
 
+import { TaskPage } from '../task/task';
+
 /*
   Generated class for the Login page.
 
@@ -26,7 +28,8 @@ export class LoginPage {
   login() {
     // console.log(this.uid);
     this.userService.login(this.uid).then(data => {
-      console.log(data);
+      // console.log(data);
+      this.navCtrl.push(TaskPage);
     }, err => {
       console.log(err);
     });
