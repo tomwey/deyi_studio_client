@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { UserService } from '../../providers/user-service';
+
+import { Loading } from '../../providers/loading';
 
 import { TaskPage } from '../task/task';
 
@@ -19,19 +21,27 @@ export class LoginPage {
 
   uid: string;
 
-  constructor(public navCtrl: NavController, public userService: UserService) {}
+  constructor(public navCtrl: NavController, 
+              public userService: UserService, 
+              public loading: Loading) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    // console.log('ionViewDidLoad LoginPage');
   }
 
   login() {
     // console.log(this.uid);
+    this.loading.show();
+
     this.userService.login(this.uid).then(data => {
       // console.log(data);
+      this.loading.dismiss();
+
       this.navCtrl.push(TaskPage);
     }, err => {
       console.log(err);
+      this.loading.dismiss();
+      
     });
   }
 

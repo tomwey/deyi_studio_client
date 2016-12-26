@@ -7,6 +7,7 @@ import { TaskPage } from '../pages/task/task';
 import { ApiService } from '../providers/api-service';
 import { UserService } from '../providers/user-service';
 import { TaskService } from '../providers/task-service';
+import { Loading } from '../providers/loading';
 import { Storage } from '@ionic/storage';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { Storage } from '@ionic/storage';
     UserService,
     ApiService,
     TaskService,
-    Storage
+    Storage,
+    Loading,
   ]
 })
 export class AppModule {}

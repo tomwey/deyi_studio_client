@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { TaskService } from '../../providers/task-service';
 import { UserService } from '../../providers/user-service';
+
+// import { Loading } from '../../providers/loading';
 
 /*
   Generated class for the Task page.
@@ -17,19 +19,40 @@ import { UserService } from '../../providers/user-service';
 export class TaskPage {
 
   task_list: any = { current: [], after: [], completed: [] };
-  constructor(public navCtrl: NavController, public taskService: TaskService, public userService: UserService) {}
+  constructor(public navCtrl: NavController, 
+              public taskService: TaskService, 
+              public userService: UserService,
+              public loadingCtrl: LoadingController) {}
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad TaskPage');
+    this.reloadTaskList();
+  }
+
+  reloadTaskList() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'ios',
+    });
+    loading.present();
+
     this.userService.currentUser().then(data => {
       let user = JSON.parse(data);
       this.taskService.getTaskList(user.id).then(data => {
         console.log(data);
         this.task_list = data;
+        
+        loading.dismiss();
+        
       }, err => {
         console.log(err);
+        // this.loading.dismiss();
+        loading.dismiss();
       })
     });
+  }
+  
+  grabTask(task_id) {
+    console.log(task_id);
   }
 
 }
