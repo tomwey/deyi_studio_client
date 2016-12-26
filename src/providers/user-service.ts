@@ -14,7 +14,7 @@ export class UserService {
   user: any;
 
   constructor(public api: ApiService, public storage: Storage) {
-    console.log('Hello UserService Provider');
+    // console.log('Hello UserService Provider');
   }
 
   currentUser() {

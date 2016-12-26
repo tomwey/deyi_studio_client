@@ -9,7 +9,7 @@
   <ion-navbar color="dark">
     <ion-title>快速任务</ion-title>
     <ion-buttons end>
-      <button ion-button ion-icon icon-only (click)="reloadTaskList()">
+      <button ion-button icon-only (click)="reloadTaskList()">
         <ion-icon name="refresh"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,6 +18,16 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let task of task_list.progress" (click)="gotoTaskDetail(task)">
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]="task.icon" />
+      </ion-avatar>
+      <h2>{{task.keywords}}</h2>
+      <p class="task-stats">{{task.start_time}} {{task.put_in_count - task.grab_count < 0 ? 0 : task.put_in_count - task.grab_count}}份 {{ task.special_price == '0.0' ? '100%奖励' : '非100%奖励' }}</p>
+      <ion-badge color="danger" item-right>进行中</ion-badge>
+    </ion-item>
+  </ion-card>
   <ion-card *ngFor="let task of task_list.current" (click)="grabTask(task.id)">
     <ion-item>
       <ion-avatar item-left>
@@ -25,7 +35,7 @@
       </ion-avatar>
       <h2>{{task.keywords}}</h2>
       <p class="task-stats">{{task.start_time}} {{task.put_in_count - task.grab_count < 0 ? 0 : task.put_in_count - task.grab_count}}份 {{ task.special_price == '0.0' ? '100%奖励' : '非100%奖励' }}</p>
-      <ion-badge color="danger" item-right>+{{task.in_progress ? '进行中' : task.price}}</ion-badge>
+      <ion-badge color="danger" item-right>+{{task.price}}</ion-badge>
     </ion-item>
   </ion-card>
   <div *ngIf="task_list.after.length > 0" class="tip-header">以下是即将开始的任务</div>

@@ -18,4 +18,16 @@ export class TaskService {
     return this.api.get('tasks/home', { uid: uid });
   }
 
+  grabTask(uid, taskId) {
+    return this.api.post('tasks/' + taskId + '/grab', { uid: uid });
+  }
+
+  cancelTask(uid, taskId, taskLogId) {
+    return this.api.post('tasks/' + taskId + '/cancel', { uid: uid, id: taskLogId });
+  }
+
+  commitTask(uid, taskId, taskLogId) {
+    return this.api.post('tasks/' + taskId + '/commit', { uid: uid, id: taskLogId });
+  }
+
 }

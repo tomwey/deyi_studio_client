@@ -53,6 +53,8 @@ export class ApiService {
     params.i = i;
     params.ak = ak;
 
+    console.log(params);
+    
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let reqOptions = new RequestOptions({ headers: headers });
     return this.http.post(url, JSON.stringify(params), reqOptions)
