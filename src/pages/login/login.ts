@@ -37,7 +37,8 @@ export class LoginPage {
       // console.log(data);
       this.loading.dismiss();
 
-      this.navCtrl.push(TaskPage);
+      // this.navCtrl.push(TaskPage);
+      this.navCtrl.setRoot(TaskPage);
     }, err => {
       console.log(err);
       this.loading.dismiss();

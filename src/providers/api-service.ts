@@ -12,8 +12,8 @@ import 'rxjs/add/operator/toPromise';
   for more info on providers and Angular 2 DI.
 */
 
-const API_HOST: string = "http://10.0.16.54:3000/api/v1";
-const API_KEY:  string = "4f8649737bc94fe68c29b1b138eba483";
+const API_HOST: string = "http://stu.deyiwifi.com/api/v1";
+const API_KEY:  string = "4f8649737bc94fe68c29b1b133eba488";
 
 @Injectable()
 export class ApiService {
