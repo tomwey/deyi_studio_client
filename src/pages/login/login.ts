@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 
 import { UserService } from '../../providers/user-service';
 
@@ -23,7 +23,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, 
               public userService: UserService, 
-              public loading: Loading) {}
+              public loading: Loading,
+              private toastCtrl: ToastController) {}
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad LoginPage');
@@ -40,8 +41,14 @@ export class LoginPage {
       // this.navCtrl.push(TaskPage);
       this.navCtrl.setRoot(TaskPage);
     }, err => {
-      console.log(err);
+      // console.log(err);
       this.loading.dismiss();
+      
+      let toast = this.toastCtrl.create({
+        message: err,
+        duration: 2000,
+      });
+      toast.present();
       
     });
   }
