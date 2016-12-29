@@ -79,17 +79,17 @@ export class TaskDetailPage {
 
   // 复制关键字并打开苹果商店
   copyAndOpenAppStore() {
-    // Clipboard.copy('test');
+    Clipboard.copy('test');
     
-    // Clipboard.paste().then(
-    //   (resolve: string) => {
-    //     alert(resolve);
-    //   },
-    //   (reject: string) => {
-    //     alert('Error: ' + reject);
-    //   }
-    // );
-    
+    Clipboard.paste().then(
+      (resolve: string) => {
+        alert(resolve);
+      },
+      (reject: string) => {
+        alert('Error: ' + reject);
+      }
+    );
+
     // 打开苹果商店
     window.location.href = "itms-apps://";
   }
