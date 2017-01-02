@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, URLSearchParams, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Md5 } from 'ts-md5/dist/md5';
-import { Observable } from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
 
 /*
