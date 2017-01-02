@@ -22,7 +22,7 @@ export class TaskPage {
 
   user: any;
   grabbedTaskData: any;
-
+  emptyResult: boolean;
   task_list: any = { current: [], after: [], completed: [] };
   constructor(public navCtrl: NavController, 
               public taskService: TaskService, 
@@ -32,6 +32,7 @@ export class TaskPage {
                 // this.loading = this.loadingCtrl.create({
                 //   spinner: 'ios'
                 // });
+                this.emptyResult = false;
               }
 
   ionViewDidLoad() {
@@ -63,6 +64,14 @@ export class TaskPage {
         
         loading.dismiss();
         
+        if (this.task_list.progress.length == 0 &&
+            this.task_list.after.length == 0 && 
+            this.task_list.current.length == 0 &&
+            this.task_list.completed.length == 0) {
+          this.emptyResult = true;
+        } else {
+          this.emptyResult = false;
+        }
       }, err => {
         console.log(err);
         // this.loading.dismiss();

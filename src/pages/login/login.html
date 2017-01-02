@@ -12,12 +12,13 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
     <ion-item>
-      <ion-label floating>账号</ion-label>
-      <ion-input type="text" [(ngModel)]="uid"></ion-input>
+      <ion-input type="text" [(ngModel)]="uid" placeholder="输入账号"></ion-input>
     </ion-item>
   </ion-list>
-  <button full ion-button color="secondary" (click)="login()">登录</button>
+  <div padding-left padding-right>
+    <button block ion-button color="secondary" (click)="login()">登录</button>
+  </div>
 </ion-content>

@@ -18,6 +18,11 @@
 </ion-header>
 
 <ion-content>
+  <div class="empty-result-tips-container" *ngIf="emptyResult">
+    <div class="empty-result-tips">
+      没有任务，等会再来吧！
+    </div>
+  </div>
   <ion-card *ngFor="let task of task_list.progress" (click)="gotoTaskDetail(task)">
     <ion-item>
       <ion-avatar item-left>

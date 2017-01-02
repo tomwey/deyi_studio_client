@@ -6,7 +6,20 @@ page-task {
         text-align: center;
         font-size: 1.2em;
     }
-    // .task-stats {
-    //     // font-size: 0.6em;
-    // }
+    .task-stats {
+        font-size: 0.7em;
+    }
+    .empty-result-tips-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+        .empty-result-tips {
+            max-width: 50%;
+            padding: 30px;
+            text-align: center;
+            border: 2px dashed #ccc;
+            color: #ccc;
+        }
+    }
 }
