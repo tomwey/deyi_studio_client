@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { TaskService } from '../../providers/task-service';
 // import { Clipboard } from 'ionic-native';
+import * as Clipboard from 'clipboard';
 
 /*
   Generated class for the TaskDetail page.
@@ -40,6 +41,9 @@ export class TaskDetailPage {
 
       this.startTimer();
     }
+
+    let clipboard = new Clipboard('.btn');
+    console.log(clipboard);
   }
 
   // 计算时间差值，单位为秒
