@@ -20,8 +20,6 @@ export class TaskDetailPage {
   callback: any;
   countdown: any;
 
-
-
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private alertCtrl: AlertController,
