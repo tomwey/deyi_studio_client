@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { TaskService } from '../../providers/task-service';
-import { Clipboard } from 'ionic-native';
+// import { Clipboard } from 'ionic-native';
 
 /*
   Generated class for the TaskDetail page.
@@ -79,16 +79,16 @@ export class TaskDetailPage {
 
   // 复制关键字并打开苹果商店
   copyAndOpenAppStore() {
-    Clipboard.copy('test');
+    // Clipboard.copy('test');
     
-    Clipboard.paste().then(
-      (resolve: string) => {
-        alert(resolve);
-      },
-      (reject: string) => {
-        alert('Error: ' + reject);
-      }
-    );
+    // Clipboard.paste().then(
+    //   (resolve: string) => {
+    //     alert(resolve);
+    //   },
+    //   (reject: string) => {
+    //     alert('Error: ' + reject);
+    //   }
+    // );
 
     // 打开苹果商店
     window.location.href = "itms-apps://";

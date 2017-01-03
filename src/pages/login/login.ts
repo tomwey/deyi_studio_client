@@ -3,8 +3,6 @@ import { NavController, ToastController, LoadingController } from 'ionic-angular
 
 import { UserService } from '../../providers/user-service';
 
-import { Loading } from '../../providers/loading';
-
 import { TaskPage } from '../task/task';
 
 /*

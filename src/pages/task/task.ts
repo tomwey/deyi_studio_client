@@ -5,6 +5,7 @@ import { TaskService } from '../../providers/task-service';
 import { UserService } from '../../providers/user-service';
 
 import { TaskDetailPage } from '../task-detail/task-detail';
+import { LoginPage } from '../login/login';
 
 // import { Loading } from '../../providers/loading';
 
@@ -45,15 +46,28 @@ export class TaskPage {
     this.reloadTaskList();
   }
 
-  reloadTaskList() {
-    console.log('reload');
+  showToast(msg) {
+      setTimeout(() => {
+        let toast = this.toastCtrl.create({
+        message: msg,
+        duration: 2000,
+      });
+      toast.present();
+    }, 200);
+  }
 
+  showLoading() {
     let loading = this.loadingCtrl.create({
       spinner: 'ios',
     });
-    // let loading = this.loading;
-
     loading.present();
+    return loading;
+  }
+
+  reloadTaskList() {
+    // console.log('reload');
+
+    let loading = this.showLoading();
 
     this.userService.currentUser().then(data => {
       let user = JSON.parse(data);
@@ -76,6 +90,12 @@ export class TaskPage {
         console.log(err);
         // this.loading.dismiss();
         loading.dismiss();
+
+        this.showToast(err);
+
+        setTimeout(() => {
+          this.navCtrl.setRoot(LoginPage);
+        }, 500);
       })
     });
   }
@@ -108,7 +128,7 @@ export class TaskPage {
         });
         toast.present();
       }, 500);
-      console.log(err);
+      // console.log(err);
     });
   }
 
