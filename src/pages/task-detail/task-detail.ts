@@ -21,14 +21,15 @@ export class TaskDetailPage {
   callback: any;
   countdown: any;
 
+  clipboard: Clipboard;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private alertCtrl: AlertController,
               private taskService: TaskService,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController) {
-    // this.navCtrl.set
-    // console.log(navParams);
+
     this.task = navParams.get('task');
     this.user = navParams.get('user');
     this.callback = navParams.get('callback');
@@ -42,8 +43,40 @@ export class TaskDetailPage {
       this.startTimer();
     }
 
-    let clipboard = new Clipboard('.btn');
-    console.log(clipboard);
+  }
+
+  ionViewDidLoad() {
+    this.initClipboard();
+  }
+
+  initClipboard() {
+    // 绑定复制到剪贴板的库
+    var keywords = this.task.keywords;
+    console.log(keywords);
+    this.clipboard = new Clipboard('.copyBtn', {
+      text: function() { return keywords; }
+    });
+
+    var _this = this;
+    this.clipboard.on('success', (e) => {
+      _this.showToast(`成功复制关键字“${keywords}”`);
+
+      setTimeout(function() {
+        _this.openAppStore();
+      }, 50);
+      
+    })
+    this.clipboard.on('error', (e) => {
+      _this.showToast('版本太低，复制出错!');
+
+      // setTimeout(function() {
+      //   _this.openAppStore();
+      // }, 200);
+    });
+  }
+
+  handleCopySuccess(e) {
+    console.log(e.text);
   }
 
   // 计算时间差值，单位为秒
@@ -66,10 +99,7 @@ export class TaskDetailPage {
   // 创建并启动一个定时器
   startTimer() {
     var timer = setInterval(() => {
-      // console.log('123...');
-        // let timestamp = new Date().getTime();
         let seconds = this.distanceSeconds(this.task.expire);
-        // console.log(seconds);
         if (seconds <= 0) {
           this.countdown = "00:00";
           clearInterval(timer);
@@ -79,18 +109,8 @@ export class TaskDetailPage {
       }, 1000);
   }
 
-  // 复制关键字并打开苹果商店
-  copyAndOpenAppStore() {
-    // Clipboard.copy('test');
-    
-    // Clipboard.paste().then(
-    //   (resolve: string) => {
-    //     alert(resolve);
-    //   },
-    //   (reject: string) => {
-    //     alert('Error: ' + reject);
-    //   }
-    // );
+  openAppStore() {
+    // console.log('即将打开苹果商店');
 
     // 打开苹果商店
     window.location.href = "itms-apps://";

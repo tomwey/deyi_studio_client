@@ -10,7 +10,6 @@ import { UserService } from '../providers/user-service';
 import { TaskService } from '../providers/task-service';
 import { Loading } from '../providers/loading';
 import { Storage } from '@ionic/storage';
-// import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -22,10 +21,7 @@ import { Storage } from '@ionic/storage';
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
-      // backButtonIcon: 'arrow-back',
-      // backButtonText: '返回',
     }),
-    // ClipboardModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
