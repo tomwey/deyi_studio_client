@@ -38,7 +38,7 @@
 
     <ion-card-content>
       <button class="copyBtn" ion-button block data-clipboard-action="copy" color="danger">复制【{{task.keywords}}】</button>
-      <button ion-button block color="primary">打开应用</button>
+      <button ion-button block color="primary" (click)="openApp();">打开应用</button>
       <button ion-button block color="danger" [disabled]="countdown == '00:00'">提交任务</button>
     </ion-card-content>
   </ion-card>

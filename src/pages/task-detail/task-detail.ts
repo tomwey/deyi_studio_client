@@ -116,6 +116,12 @@ export class TaskDetailPage {
     window.location.href = "itms-apps://";
   }
 
+  openApp() {
+    // setTimeout(function () { window.location.href = "https://itunes.apple.com/appdir"; }, 25);
+    // window.location.href = "tick-girlwallpapers-1://";
+    // console.log('执行');
+  }
+
   // 点击返回按钮
   goBack() {
     let alert = this.alertCtrl.create({
